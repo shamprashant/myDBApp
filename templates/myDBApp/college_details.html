@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Detail Page</h1>
+    <h2>College Name: {{college_detail.name}}</h2>
+    <h2>College Director: {{college_detail.director_name}}</h2>
+    <h2>College location: {{college_detail.location}}</h2>
+    <h2>College courses: {{college_detail.courses}}</h2>
+    <br><br><br><br>
+    <h1>Student Details</h1>
+    <ul>
+    {% for student in college_detail.students.all %}
+      <li>first_name: {{student.first_name}}</li>
+      <li>last_name: {{student.last_name}}</li>
+      <li>roll_number: {{student.roll_number}}</li>
+      <li>phone_number: {{student.phone_number}}</li>
+      <li>course: {{student.course}}</li>
+      <a href="{% url 'myDBApp:update_student' pk=college_detail.pk %}">Update</a>
+      <a href="{% url 'myDBApp:delete_student' pk=college_detail.pk %}">Delete</a>
+    {% endfor %}
+    <p></p><br>
+    <a href="{% url 'myDBApp:create_student' %}">Click here to register yourself as a student</a>
+    </ul>
+  </body>
+</html>
